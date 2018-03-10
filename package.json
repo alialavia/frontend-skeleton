@@ -1,0 +1,30 @@
+{
+  "name": "intelligica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && node dist/index.js"
+  },
+  "author": "Ali Alavi",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cache": "^1.0.2",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-es6-template-strings": "^1.0.1",
+    "gulp-ignore-errors": "0.0.4",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.4",
+    "require-reload": "^0.2.2",
+    "run-sequence": "^2.2.1",
+    "zip-array": "^1.0.1"
+  }
+}
