@@ -60,7 +60,7 @@ Or use the ```many``` helper function to avoid unneccasary repeatition:
 </ul>
 ```
 
-For a comprehensive example, take a look at [src/template/index.html](src/template/index.html), [src/template/resolve/data.json](src/template/resolve/data.json) and [src/template/resolve/commands.js](src/template/resolve/commands.js).
+For a comprehensive example, take a look at [src/templates/index.html](src/templates/index.html), [src/templates/resolve/data.json](src/templates/resolve/data.json) and [src/templates/resolve/commands.js](src/templates/resolve/commands.js).
 
 ## Important
 If you have inline javascript in your html files, make sure that you don't use template strings with same names as the ones in the data.json and command.js files.
