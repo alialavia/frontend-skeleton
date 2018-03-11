@@ -5,7 +5,7 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var plumber = require('gulp-plumber');
 var template_resolver = require('../gulp-es6-template-resolver');
-//var template_resolver = require('./gulp-es6-template-resolver.js')('./src/templates/defs.js', 'src/templates/state.js');
+
 // Following packages are used for concatenation and minifying refs (css, js)
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
@@ -72,7 +72,7 @@ function resolve_template() {
 
         }
     };
-    var tagFile = './src/templates/defs.js', dataFile = 'src/templates/state.json';
+    var tagFile = './src/templates/resolve/commands.js', dataFile = './src/templates/resolve/data.json';
     var state = JSON.parse(fs.readFileSync(dataFile), 'utf-8');
     var tags = reload(tagFile);
     var resolverObject = Object.assign({}, helpers, tags, state);
