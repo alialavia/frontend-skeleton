@@ -121,9 +121,9 @@ gulp.task('cache:clear', function() {
 
 // Our build task first cleans the dist folder, then runs all other tasks
 gulp.task('build', function() {
-    runSequence('clean:dist', 'sass', 'template', ['useref', 'images', 'fonts'])
+    runSequence('clean:dist', ['sass', 'template'], ['useref', 'images', 'fonts'])
 })
 
 gulp.task('default', function() {
-    runSequence('sass', 'template', ['browserSync', 'watch'])
+    runSequence(['sass', 'template'], ['browserSync', 'watch'])
 })
