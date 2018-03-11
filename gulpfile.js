@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var plumber = require('gulp-plumber');
-var template_resolver = require('../gulp-es6-template-resolver')('./src/templates/defs.js', 'src/templates/state.js');
+var template_resolver = require('../gulp-es6-template-resolver');
 //var template_resolver = require('./gulp-es6-template-resolver.js')('./src/templates/defs.js', 'src/templates/state.js');
 // Following packages are used for concatenation and minifying refs (css, js)
 var useref = require('gulp-useref');
@@ -59,13 +59,30 @@ gulp.task('sass', function() {
 
 
 var reload = require('require-reload')(require);
+var fs = require('fs');
 
+function resolve_template() {
+    var helpers = {
+        many: function many(ui, args) {
+            //console.log({ui, args});
+            var placeholders = [].slice.call(arguments, 1);
+            //console.log({placeholders});
+            var result = placeholders.map((x) => ui(...x));
+            return result.reduce((a, b) => a + b);
 
+        }
+    };
+    var tagFile = './src/templates/defs.js', dataFile = 'src/templates/state.json';
+    var state = JSON.parse(fs.readFileSync(dataFile), 'utf-8');
+    var tags = reload(tagFile);
+    var resolverObject = Object.assign({}, helpers, tags, state);
+    return template_resolver(resolverObject);
+}        
 
 gulp.task('template', function() {
     return gulp.src('src/templates/**/*.html')
         .pipe(plumber())
-        .pipe(template_resolver())
+        .pipe(resolve_template())
         .pipe(gulp.dest('src/'))
         // Refresh the browser after the css files are compiled
         .pipe(browserSync.reload({
@@ -76,7 +93,7 @@ gulp.task('template', function() {
 // Compile and refresh the browser if any source files changed
 gulp.task('watch', ['browserSync', 'sass'], function() {
     gulp.watch('src/scss/**/*.scss', ['sass']);
-    gulp.watch('src/templates/**/*.+(js|html)', ['template']);
+    gulp.watch('src/templates/**/*.+(js|html|json)', ['template']);
     /* Reloads the browser whenever HTML or JS files change. 
        We already took care of css changes in the sass task */
     gulp.watch('src/*.html', browserSync.reload);
