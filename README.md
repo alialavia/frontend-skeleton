@@ -33,7 +33,7 @@ You can use it in your html like this:
     ...
 ```
 
-You can also define new tags in command.js. A simple commands.js file might look like this:
+You can also define new html commands (a collection of parametrized tags) in command.js. A simple commands.js file might look like this:
 
 ```
 module.exports = {
@@ -41,6 +41,7 @@ module.exports = {
 	                          <a class="nav-link" href="${url}">${title}</a></li>`
 };
 ```
+
 This defines a menu item. You can use it like this:
 ```
 <ul class="navbar-nav ml-auto">
@@ -49,7 +50,7 @@ This defines a menu item. You can use it like this:
             ${menu('Home', 'index.html')}
 </ul>
 ```
-Or use the ```many``` helper function to avoid repeating:
+Or use the ```many``` helper function to avoid unneccasary repeatition:
 ```
 <ul class="navbar-nav ml-auto">
             ${many(menu, ['About', 'about.html'],
@@ -59,5 +60,7 @@ Or use the ```many``` helper function to avoid repeating:
 </ul>
 ```
 
+For a comprehensive example, take a look at src/template/index.html, src/template/resolve/data.json and src/template/resolve/commands.js
+
 ## Important
-If you have inline javascript in your html files, make sure that you don't use template strings with same names as the ones in the data.json and command.js file.
+If you have inline javascript in your html files, make sure that you don't use template strings with same names as the ones in the data.json and command.js files.
