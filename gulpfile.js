@@ -16,6 +16,7 @@ var imagemin = require('gulp-imagemin'); // Used to optimize and cache images
 var cache = require('gulp-cache');
 var del = require('del'); // Used for clean task
 var runSequence = require('run-sequence'); // For running the tasks sequentially
+var reload = require('require-reload')(require);
 
 // Simply copy all the fonts to dist/fonts
 gulp.task('fonts', function() {
@@ -55,34 +56,12 @@ gulp.task('sass', function() {
         .pipe(browserSync.reload({
             stream: true
         }))
-});
-
-
-var reload = require('require-reload')(require);
-var fs = require('fs');
-
-function resolve_template() {
-    var helpers = {
-        many: function many(ui, args) {
-            //console.log({ui, args});
-            var placeholders = [].slice.call(arguments, 1);
-            //console.log({placeholders});
-            var result = placeholders.map((x) => ui(...x));
-            return result.reduce((a, b) => a + b);
-
-        }
-    };
-    var tagFile = './src/templates/resolve/commands.js', dataFile = './src/templates/resolve/data.json';
-    var state = JSON.parse(fs.readFileSync(dataFile), 'utf-8');
-    var tags = reload(tagFile);
-    var resolverObject = Object.assign({}, helpers, tags, state);
-    return template_resolver(resolverObject);
-}        
+});  
 
 gulp.task('template', function() {
     return gulp.src('src/templates/**/*.html')
         .pipe(plumber())
-        .pipe(resolve_template())
+        .pipe(template_resolver('./src/templates/resolve/commands.js', './src/templates/resolve/data.json'))
         .pipe(gulp.dest('src/'))
         // Refresh the browser after the css files are compiled
         .pipe(browserSync.reload({
