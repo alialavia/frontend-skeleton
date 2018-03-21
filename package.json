@@ -1,7 +1,7 @@
 {
   "name": "templated_bootstrap_modern_business",
   "version": "0.1.0",
-  "description": "",
+  "description": "This template is based on [Bootstrap Modern Business](https://github.com/BlackrockDigital/startbootstrap-modern-business), but uses [gulp-static-template-resolver](https://github.com/alialavia/gulp-static-template-resolver) in order to generate the htmls based on some json data and javascript commands, stored in src/templates/resolve.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "start": "npm run build && node dist/index.js"
   },
   "author": "Ali Alavi",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "del": "^3.0.0",
@@ -27,5 +27,23 @@
     "require-reload": "^0.2.2",
     "run-sequence": "^2.2.1",
     "zip-array": "^1.0.1"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alialavia/templated-bootstrap-modern-business.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "template",
+    "gulp",
+    "html",
+    "javascript",
+    "static",
+    "ES6"
+  ],
+  "bugs": {
+    "url": "https://github.com/alialavia/templated-bootstrap-modern-business/issues"
+  },
+  "homepage": "https://github.com/alialavia/templated-bootstrap-modern-business#readme"
 }

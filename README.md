@@ -1,4 +1,4 @@
-# What is it?
+# Templated Bootstrap Modern Business
 
 This template is based on [Bootstrap Modern Business](https://github.com/BlackrockDigital/startbootstrap-modern-business), but uses [gulp-static-template-resolver](https://github.com/alialavia/gulp-static-template-resolver) in order to generate the htmls based on some json data and javascript commands, stored in src/templates/resolve.
 
