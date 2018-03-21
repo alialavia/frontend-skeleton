@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var plumber = require('gulp-plumber');
-var template_resolver = require('../gulp-es6-template-resolver');
+var template_resolver = require('gulp-static-template-resolver');
 
 // Following packages are used for concatenation and minifying refs (css, js)
 var useref = require('gulp-useref');

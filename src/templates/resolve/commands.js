@@ -1,11 +1,9 @@
 module.exports = {
-    menu: (title, url) => `<li class="nav-item">
-	<a class="nav-link" href="${url}">${title}</a></li>`,
-	dropdown_item: (title, url) => `
-                <a class="dropdown-item" href="${url}">${title}</a>
-              `,
+    menu: (title, url) => `<li class="nav-item"><a class="nav-link" href="${url}">${title}</a></li>`,
+    dropdown_item: (title, url) => `<a class="dropdown-item" href="${url}">${title}</a>`,
     dropdown_menu: (title, items) => `<li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown${title}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                 href="#" id="navbarDropdown${title}"> 
                 ${title}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown${title}">
