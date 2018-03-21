@@ -7,3 +7,9 @@ Just run `gulp`, which automatically resolve all the html files in templates/ ba
 
 Change the data in templates/resolve/data.json and see the changes in the browser, live!
 
+## Important
+If you have inline javascript in your html files, make sure that you don't use template strings with same names as the ones in the data.json and command.js files.
+
+## Test
+```npm test```
+
