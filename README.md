@@ -62,5 +62,8 @@ Or use the ```many``` helper function to avoid unneccasary repeatition:
 
 For a comprehensive example, take a look at [src/templates/index.html](src/templates/index.html), [src/templates/resolve/data.json](src/templates/resolve/data.json) and [src/templates/resolve/commands.js](src/templates/resolve/commands.js).
 
+## Test
+```npm test```
+
 ## Important
 If you have inline javascript in your html files, make sure that you don't use template strings with same names as the ones in the data.json and command.js files.
